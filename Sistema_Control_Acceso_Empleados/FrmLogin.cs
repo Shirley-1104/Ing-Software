@@ -39,5 +39,25 @@ namespace Sistema_Control_Acceso_Empleados
                 lblMensaje.Text = "Correo o contraseña incorrectos.";
             }
         }
+
+        private void FrmLogin_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblTitulo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblMensaje_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblCorreo_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

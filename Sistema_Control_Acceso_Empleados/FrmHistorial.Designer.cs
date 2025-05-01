@@ -36,42 +36,56 @@
             // 
             // lblTitulo
             // 
+            this.lblTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTitulo.AutoSize = true;
-            this.lblTitulo.Font = new System.Drawing.Font("Segoe UI Black", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.Location = new System.Drawing.Point(216, 47);
+            this.lblTitulo.BackColor = System.Drawing.Color.Transparent;
+            this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.lblTitulo.Location = new System.Drawing.Point(51, 23);
+            this.lblTitulo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(331, 45);
+            this.lblTitulo.Size = new System.Drawing.Size(236, 32);
             this.lblTitulo.TabIndex = 0;
-            this.lblTitulo.Text = "Historial de Acceso ";
+            this.lblTitulo.Text = "Historial de acceso ";
+            this.lblTitulo.Click += new System.EventHandler(this.lblTitulo_Click);
             // 
             // dgvHistorial
             // 
             this.dgvHistorial.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvHistorial.Location = new System.Drawing.Point(12, 108);
+            this.dgvHistorial.Location = new System.Drawing.Point(11, 70);
+            this.dgvHistorial.Margin = new System.Windows.Forms.Padding(2);
             this.dgvHistorial.Name = "dgvHistorial";
             this.dgvHistorial.RowHeadersWidth = 62;
             this.dgvHistorial.RowTemplate.Height = 28;
-            this.dgvHistorial.Size = new System.Drawing.Size(517, 330);
+            this.dgvHistorial.Size = new System.Drawing.Size(350, 199);
             this.dgvHistorial.TabIndex = 1;
             // 
             // btnCerrarSesion
             // 
-            this.btnCerrarSesion.Location = new System.Drawing.Point(567, 224);
+            this.btnCerrarSesion.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnCerrarSesion.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCerrarSesion.ForeColor = System.Drawing.Color.White;
+            this.btnCerrarSesion.Location = new System.Drawing.Point(384, 136);
+            this.btnCerrarSesion.Margin = new System.Windows.Forms.Padding(2);
             this.btnCerrarSesion.Name = "btnCerrarSesion";
-            this.btnCerrarSesion.Size = new System.Drawing.Size(191, 95);
+            this.btnCerrarSesion.Size = new System.Drawing.Size(127, 62);
             this.btnCerrarSesion.TabIndex = 2;
-            this.btnCerrarSesion.Text = "Cerrar Sesión";
-            this.btnCerrarSesion.UseVisualStyleBackColor = true;
+            this.btnCerrarSesion.Text = "Cerrar sesión";
+            this.btnCerrarSesion.UseVisualStyleBackColor = false;
             this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
             // 
             // FrmHistorial
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackgroundImage = global::Sistema_Control_Acceso_Empleados.Properties.Resources.acceso2;
+            this.ClientSize = new System.Drawing.Size(533, 292);
             this.Controls.Add(this.btnCerrarSesion);
             this.Controls.Add(this.dgvHistorial);
             this.Controls.Add(this.lblTitulo);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmHistorial";
             this.Text = "FrmHistorial";
             this.Load += new System.EventHandler(this.FrmHistorial_Load);

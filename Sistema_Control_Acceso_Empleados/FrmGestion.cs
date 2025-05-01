@@ -29,5 +29,10 @@ namespace Sistema_Control_Acceso_Empleados
             FrmAutorizacionManual formAut = new FrmAutorizacionManual();
             formAut.ShowDialog();
         }
+
+        private void lblBienvenida_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

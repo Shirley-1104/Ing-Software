@@ -36,5 +36,30 @@ namespace Sistema_Control_Acceso_Empleados
             lblResultado.Text = $"Acceso autorizado para {correo} el {fechaHora}";
             // Aquí iría el INSERT en la base de datos
         }
+
+        private void txtCorreoUser_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtMotivo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FrmAutorizacionManual_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblResultado_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

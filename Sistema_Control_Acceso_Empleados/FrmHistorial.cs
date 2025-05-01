@@ -36,5 +36,10 @@ namespace Sistema_Control_Acceso_Empleados
             login.Show();
             this.Close();
         }
+
+        private void lblTitulo_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
