@@ -86,5 +86,22 @@ namespace Sistema_Control_Acceso_Empleados
                 MessageBox.Show("Selecciona un empleado primero.");
             }
         }
+
+        private void btnAccesos_Click(object sender, EventArgs e)
+        {
+            if (filaSeleccionada >= 0)
+            {
+                DataGridViewRow fila = dgvEmpleados.Rows[filaSeleccionada];
+                string id = fila.Cells[0].Value?.ToString();
+                string nombre = fila.Cells[1].Value?.ToString();
+
+                frmGestionAcceso ventana = new frmGestionAcceso(id, nombre);
+                ventana.ShowDialog(); // o .Show() si quieres no modal
+            }
+            else
+            {
+                MessageBox.Show("Selecciona un empleado primero.");
+            }
+        }
     }
 }

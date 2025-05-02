@@ -70,6 +70,12 @@
     <Compile Include="FrmGestion.Designer.cs">
       <DependentUpon>FrmGestion.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmGestionAcceso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGestionAcceso.Designer.cs">
+      <DependentUpon>frmGestionAcceso.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmHistorial.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +113,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmGestion.resx">
       <DependentUpon>FrmGestion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGestionAcceso.resx">
+      <DependentUpon>frmGestionAcceso.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmHistorial.resx">
       <DependentUpon>FrmHistorial.cs</DependentUpon>

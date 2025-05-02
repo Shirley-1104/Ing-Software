@@ -12,10 +12,6 @@ namespace Sistema_Control_Acceso_Empleados
 {
     public partial class frmEditar : Form
     {
-        public frmEditar()
-        {
-            InitializeComponent();
-        }
         public string NombreEditado { get; private set; }
         public string ApellidoEditado { get; private set; }
         public string CorreoEditado { get; private set; }

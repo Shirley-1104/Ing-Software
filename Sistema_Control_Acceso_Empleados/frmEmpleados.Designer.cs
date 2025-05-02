@@ -33,18 +33,19 @@
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.txtSeleccionado = new System.Windows.Forms.TextBox();
+            this.btnAccesos = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmpleados)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvEmpleados
             // 
             this.dgvEmpleados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEmpleados.Location = new System.Drawing.Point(37, 41);
+            this.dgvEmpleados.Location = new System.Drawing.Point(41, 41);
             this.dgvEmpleados.Margin = new System.Windows.Forms.Padding(2);
             this.dgvEmpleados.Name = "dgvEmpleados";
             this.dgvEmpleados.RowHeadersWidth = 62;
             this.dgvEmpleados.RowTemplate.Height = 28;
-            this.dgvEmpleados.Size = new System.Drawing.Size(459, 211);
+            this.dgvEmpleados.Size = new System.Drawing.Size(463, 211);
             this.dgvEmpleados.TabIndex = 4;
             this.dgvEmpleados.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHistorial_CellClick);
             this.dgvEmpleados.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHistorial_CellContentClick);
@@ -70,10 +71,10 @@
             this.btnEditar.BackColor = System.Drawing.Color.DodgerBlue;
             this.btnEditar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEditar.ForeColor = System.Drawing.Color.White;
-            this.btnEditar.Location = new System.Drawing.Point(278, 270);
+            this.btnEditar.Location = new System.Drawing.Point(344, 270);
             this.btnEditar.Margin = new System.Windows.Forms.Padding(2);
             this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(99, 44);
+            this.btnEditar.Size = new System.Drawing.Size(88, 44);
             this.btnEditar.TabIndex = 6;
             this.btnEditar.Text = "Editar empleado";
             this.btnEditar.UseVisualStyleBackColor = false;
@@ -84,10 +85,10 @@
             this.btnEliminar.BackColor = System.Drawing.Color.DodgerBlue;
             this.btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEliminar.ForeColor = System.Drawing.Color.White;
-            this.btnEliminar.Location = new System.Drawing.Point(397, 270);
+            this.btnEliminar.Location = new System.Drawing.Point(436, 270);
             this.btnEliminar.Margin = new System.Windows.Forms.Padding(2);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(99, 44);
+            this.btnEliminar.Size = new System.Drawing.Size(88, 44);
             this.btnEliminar.TabIndex = 7;
             this.btnEliminar.Text = "Eliminar Empleado";
             this.btnEliminar.UseVisualStyleBackColor = false;
@@ -96,12 +97,26 @@
             // txtSeleccionado
             // 
             this.txtSeleccionado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSeleccionado.Location = new System.Drawing.Point(37, 278);
+            this.txtSeleccionado.Location = new System.Drawing.Point(12, 278);
             this.txtSeleccionado.Name = "txtSeleccionado";
             this.txtSeleccionado.ReadOnly = true;
             this.txtSeleccionado.Size = new System.Drawing.Size(224, 26);
             this.txtSeleccionado.TabIndex = 8;
             this.txtSeleccionado.Text = "Empleado Seleccionado";
+            // 
+            // btnAccesos
+            // 
+            this.btnAccesos.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnAccesos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAccesos.ForeColor = System.Drawing.Color.White;
+            this.btnAccesos.Location = new System.Drawing.Point(252, 270);
+            this.btnAccesos.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAccesos.Name = "btnAccesos";
+            this.btnAccesos.Size = new System.Drawing.Size(88, 44);
+            this.btnAccesos.TabIndex = 9;
+            this.btnAccesos.Text = "Gestionar accesos";
+            this.btnAccesos.UseVisualStyleBackColor = false;
+            this.btnAccesos.Click += new System.EventHandler(this.btnAccesos_Click);
             // 
             // frmEmpleados
             // 
@@ -109,6 +124,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Sistema_Control_Acceso_Empleados.Properties.Resources.fondo_plano;
             this.ClientSize = new System.Drawing.Size(538, 325);
+            this.Controls.Add(this.btnAccesos);
             this.Controls.Add(this.txtSeleccionado);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnEditar);
@@ -128,5 +144,6 @@
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.TextBox txtSeleccionado;
+        private System.Windows.Forms.Button btnAccesos;
     }
 }
