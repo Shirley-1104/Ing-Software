@@ -16,5 +16,12 @@ namespace Sistema_Control_Acceso_Empleados
         {
             InitializeComponent();
         }
+
+        private void btnIgnorar_Click(object sender, EventArgs e)
+        {
+            FrmHistorial historial = new FrmHistorial();
+            historial.Show();
+            this.Hide();
+        }
     }
 }

@@ -30,8 +30,8 @@ namespace Sistema_Control_Acceso_Empleados
             }
             else if (correo == "empleado@empresa.com" && clave == "1234")
             {
-                FrmHistorial historial = new FrmHistorial();
-                historial.Show();
+                frmQR frm = new frmQR();
+                frm.Show();
                 this.Hide();
             }
             else
