@@ -52,6 +52,18 @@
     <Compile Include="FrmAutorizacionManual.Designer.cs">
       <DependentUpon>FrmAutorizacionManual.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmEditar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEditar.Designer.cs">
+      <DependentUpon>frmEditar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEmpleados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEmpleados.Designer.cs">
+      <DependentUpon>frmEmpleados.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmGestion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,10 +88,22 @@
     <Compile Include="frmQR.Designer.cs">
       <DependentUpon>frmQR.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmRegistro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRegistro.Designer.cs">
+      <DependentUpon>frmRegistro.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmAutorizacionManual.resx">
       <DependentUpon>FrmAutorizacionManual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEditar.resx">
+      <DependentUpon>frmEditar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEmpleados.resx">
+      <DependentUpon>frmEmpleados.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmGestion.resx">
       <DependentUpon>FrmGestion.cs</DependentUpon>
@@ -92,6 +116,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmQR.resx">
       <DependentUpon>frmQR.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRegistro.resx">
+      <DependentUpon>frmRegistro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

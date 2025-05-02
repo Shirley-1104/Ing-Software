@@ -80,7 +80,7 @@
             // txtCorreo
             // 
             this.txtCorreo.Location = new System.Drawing.Point(180, 80);
-            this.txtCorreo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCorreo.Margin = new System.Windows.Forms.Padding(2);
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.Size = new System.Drawing.Size(167, 20);
             this.txtCorreo.TabIndex = 3;
@@ -88,7 +88,7 @@
             // txtClave
             // 
             this.txtClave.Location = new System.Drawing.Point(180, 114);
-            this.txtClave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtClave.Margin = new System.Windows.Forms.Padding(2);
             this.txtClave.Name = "txtClave";
             this.txtClave.PasswordChar = '*';
             this.txtClave.Size = new System.Drawing.Size(167, 20);
@@ -100,7 +100,7 @@
             this.btnLogin.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.Color.White;
             this.btnLogin.Location = new System.Drawing.Point(60, 160);
-            this.btnLogin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(2);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(311, 29);
             this.btnLogin.TabIndex = 5;
@@ -143,7 +143,7 @@
             this.ClientSize = new System.Drawing.Size(537, 359);
             this.Controls.Add(this.panel1);
             this.DoubleBuffered = true;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmLogin";
             this.Load += new System.EventHandler(this.FrmLogin_Load);
             this.panel1.ResumeLayout(false);

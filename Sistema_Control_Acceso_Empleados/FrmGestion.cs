@@ -34,5 +34,22 @@ namespace Sistema_Control_Acceso_Empleados
         {
 
         }
+
+        private void btnRegistrar_Click(object sender, EventArgs e)
+        {
+            frmRegistro registrar = new frmRegistro();
+            registrar.ShowDialog();
+        }
+
+        private void btnVerAccesos_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEmpleados_Click(object sender, EventArgs e)
+        {
+            frmEmpleados frm = new frmEmpleados();
+            frm.ShowDialog();
+        }
     }
 }
