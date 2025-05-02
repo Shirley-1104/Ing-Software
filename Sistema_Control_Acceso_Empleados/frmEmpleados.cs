@@ -54,9 +54,19 @@ namespace Sistema_Control_Acceso_Empleados
         {
             if (filaSeleccionada >= 0)
             {
-                dgvEmpleados.Rows.RemoveAt(filaSeleccionada);
-                filaSeleccionada = -1;
-                txtSeleccionado.Clear();
+                DialogResult confirmacion = MessageBox.Show(
+            "¿Estás seguro de que deseas eliminar este empleado?",
+            "Confirmar eliminación",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Warning
+        );
+
+                if (confirmacion == DialogResult.Yes)
+                {
+                    dgvEmpleados.Rows.RemoveAt(filaSeleccionada);
+                    filaSeleccionada = -1;
+                    txtSeleccionado.Clear();
+                }
             }
             else
             {
