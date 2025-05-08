@@ -28,137 +28,174 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.Label lblCorreoUser;
-            this.txtCorreoUser = new System.Windows.Forms.TextBox();
-            this.lblMotivo = new System.Windows.Forms.Label();
-            this.txtMotivo = new System.Windows.Forms.TextBox();
-            this.btnAutorizar = new System.Windows.Forms.Button();
-            this.lblResultado = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            lblCorreoUser = new System.Windows.Forms.Label();
+            this.btnAutorizar = new System.Windows.Forms.Button();
+            this.txtMotivo = new System.Windows.Forms.TextBox();
+            this.txtCorreo = new System.Windows.Forms.TextBox();
+            this.lblMotivo = new System.Windows.Forms.Label();
+            this.lblCorreo = new System.Windows.Forms.Label();
+            this.lblTitulo = new System.Windows.Forms.Label();
+            this.pnlHeader = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.btnCerrar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
+            this.pnlHeader.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
-            // 
-            // lblCorreoUser
-            // 
-            lblCorreoUser.AutoSize = true;
-            lblCorreoUser.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            lblCorreoUser.Location = new System.Drawing.Point(52, 77);
-            lblCorreoUser.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            lblCorreoUser.Name = "lblCorreoUser";
-            lblCorreoUser.Size = new System.Drawing.Size(107, 15);
-            lblCorreoUser.TabIndex = 0;
-            lblCorreoUser.Text = "Correo del usuario:";
-            // 
-            // txtCorreoUser
-            // 
-            this.txtCorreoUser.Location = new System.Drawing.Point(189, 77);
-            this.txtCorreoUser.Margin = new System.Windows.Forms.Padding(2);
-            this.txtCorreoUser.Name = "txtCorreoUser";
-            this.txtCorreoUser.Size = new System.Drawing.Size(153, 20);
-            this.txtCorreoUser.TabIndex = 1;
-            this.txtCorreoUser.TextChanged += new System.EventHandler(this.txtCorreoUser_TextChanged);
-            // 
-            // lblMotivo
-            // 
-            this.lblMotivo.AutoSize = true;
-            this.lblMotivo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMotivo.Location = new System.Drawing.Point(27, 127);
-            this.lblMotivo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblMotivo.Name = "lblMotivo";
-            this.lblMotivo.Size = new System.Drawing.Size(132, 15);
-            this.lblMotivo.TabIndex = 2;
-            this.lblMotivo.Text = "Motivo de autorización:";
-            // 
-            // txtMotivo
-            // 
-            this.txtMotivo.Location = new System.Drawing.Point(189, 125);
-            this.txtMotivo.Margin = new System.Windows.Forms.Padding(2);
-            this.txtMotivo.Multiline = true;
-            this.txtMotivo.Name = "txtMotivo";
-            this.txtMotivo.Size = new System.Drawing.Size(153, 21);
-            this.txtMotivo.TabIndex = 3;
-            this.txtMotivo.TextChanged += new System.EventHandler(this.txtMotivo_TextChanged);
-            // 
-            // btnAutorizar
-            // 
-            this.btnAutorizar.BackColor = System.Drawing.Color.DodgerBlue;
-            this.btnAutorizar.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAutorizar.ForeColor = System.Drawing.Color.White;
-            this.btnAutorizar.Location = new System.Drawing.Point(95, 167);
-            this.btnAutorizar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnAutorizar.Name = "btnAutorizar";
-            this.btnAutorizar.Size = new System.Drawing.Size(235, 32);
-            this.btnAutorizar.TabIndex = 4;
-            this.btnAutorizar.Text = "Autorizar";
-            this.btnAutorizar.UseVisualStyleBackColor = false;
-            this.btnAutorizar.Click += new System.EventHandler(this.btnAutorizar_Click);
-            // 
-            // lblResultado
-            // 
-            this.lblResultado.AutoSize = true;
-            this.lblResultado.Location = new System.Drawing.Point(201, 219);
-            this.lblResultado.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblResultado.Name = "lblResultado";
-            this.lblResultado.Size = new System.Drawing.Size(20, 13);
-            this.lblResultado.TabIndex = 5;
-            this.lblResultado.Text = "\" \"";
-            this.lblResultado.Click += new System.EventHandler(this.lblResultado_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(112, 14);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(218, 30);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Autorización manual";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.lblResultado);
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.btnAutorizar);
             this.panel1.Controls.Add(this.txtMotivo);
+            this.panel1.Controls.Add(this.txtCorreo);
             this.panel1.Controls.Add(this.lblMotivo);
-            this.panel1.Controls.Add(this.txtCorreoUser);
-            this.panel1.Controls.Add(lblCorreoUser);
-            this.panel1.Location = new System.Drawing.Point(68, 74);
+            this.panel1.Controls.Add(this.lblCorreo);
+            this.panel1.Controls.Add(this.lblTitulo);
+            this.panel1.Location = new System.Drawing.Point(50, 88);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(397, 232);
-            this.panel1.TabIndex = 7;
+            this.panel1.Size = new System.Drawing.Size(461, 291);
+            this.panel1.TabIndex = 8;
+            // 
+            // btnAutorizar
+            // 
+            this.btnAutorizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(120)))), ((int)(((byte)(180)))));
+            this.btnAutorizar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnAutorizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAutorizar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAutorizar.ForeColor = System.Drawing.Color.White;
+            this.btnAutorizar.Location = new System.Drawing.Point(79, 208);
+            this.btnAutorizar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAutorizar.Name = "btnAutorizar";
+            this.btnAutorizar.Size = new System.Drawing.Size(311, 29);
+            this.btnAutorizar.TabIndex = 5;
+            this.btnAutorizar.Text = "Autorizar";
+            this.btnAutorizar.UseVisualStyleBackColor = false;
+            this.btnAutorizar.Click += new System.EventHandler(this.btnAutorizar_Click_1);
+            // 
+            // txtMotivo
+            // 
+            this.txtMotivo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtMotivo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMotivo.Location = new System.Drawing.Point(199, 154);
+            this.txtMotivo.Margin = new System.Windows.Forms.Padding(2);
+            this.txtMotivo.Name = "txtMotivo";
+            this.txtMotivo.Size = new System.Drawing.Size(177, 23);
+            this.txtMotivo.TabIndex = 4;
+            // 
+            // txtCorreo
+            // 
+            this.txtCorreo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCorreo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCorreo.Location = new System.Drawing.Point(199, 109);
+            this.txtCorreo.Margin = new System.Windows.Forms.Padding(2);
+            this.txtCorreo.Name = "txtCorreo";
+            this.txtCorreo.Size = new System.Drawing.Size(177, 23);
+            this.txtCorreo.TabIndex = 3;
+            // 
+            // lblMotivo
+            // 
+            this.lblMotivo.AutoSize = true;
+            this.lblMotivo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMotivo.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.lblMotivo.Location = new System.Drawing.Point(120, 154);
+            this.lblMotivo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblMotivo.Name = "lblMotivo";
+            this.lblMotivo.Size = new System.Drawing.Size(52, 17);
+            this.lblMotivo.TabIndex = 2;
+            this.lblMotivo.Text = "Motivo:";
+            // 
+            // lblCorreo
+            // 
+            this.lblCorreo.AutoSize = true;
+            this.lblCorreo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCorreo.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.lblCorreo.Location = new System.Drawing.Point(52, 109);
+            this.lblCorreo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCorreo.Name = "lblCorreo";
+            this.lblCorreo.Size = new System.Drawing.Size(120, 17);
+            this.lblCorreo.TabIndex = 1;
+            this.lblCorreo.Text = "Correo electrónico:";
+            // 
+            // lblTitulo
+            // 
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(2)))), ((int)(((byte)(195)))), ((int)(((byte)(229)))));
+            this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.lblTitulo.Location = new System.Drawing.Point(91, 47);
+            this.lblTitulo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(284, 37);
+            this.lblTitulo.TabIndex = 0;
+            this.lblTitulo.Text = "Autorizacion Manual";
+            // 
+            // pnlHeader
+            // 
+            this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(45)))), ((int)(((byte)(55)))));
+            this.pnlHeader.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlHeader.Controls.Add(this.pictureBox2);
+            this.pnlHeader.Controls.Add(this.btnCerrar);
+            this.pnlHeader.Location = new System.Drawing.Point(-2, -2);
+            this.pnlHeader.Name = "pnlHeader";
+            this.pnlHeader.Size = new System.Drawing.Size(580, 47);
+            this.pnlHeader.TabIndex = 11;
+            this.pnlHeader.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlHeader_MouseDown);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::Sistema_Control_Acceso_Empleados.Properties.Resources.Logotipo;
+            this.pictureBox2.Location = new System.Drawing.Point(-1, -5);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(153, 51);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 10;
+            this.pictureBox2.TabStop = false;
+            // 
+            // btnCerrar
+            // 
+            this.btnCerrar.BackColor = System.Drawing.Color.DarkRed;
+            this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCerrar.Location = new System.Drawing.Point(528, -1);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(51, 47);
+            this.btnCerrar.TabIndex = 0;
+            this.btnCerrar.UseVisualStyleBackColor = false;
+            this.btnCerrar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnCerrar_MouseDown);
             // 
             // FrmAutorizacionManual
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Azure;
-            this.BackgroundImage = global::Sistema_Control_Acceso_Empleados.Properties.Resources.autorizacion;
-            this.ClientSize = new System.Drawing.Size(539, 330);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
+            this.ClientSize = new System.Drawing.Size(577, 428);
+            this.Controls.Add(this.pnlHeader);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmAutorizacionManual";
             this.Text = "FrmAutorizacionManual";
             this.Load += new System.EventHandler(this.FrmAutorizacionManual_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.pnlHeader.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtCorreoUser;
-        private System.Windows.Forms.Label lblMotivo;
-        private System.Windows.Forms.TextBox txtMotivo;
-        private System.Windows.Forms.Button btnAutorizar;
-        private System.Windows.Forms.Label lblResultado;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnAutorizar;
+        private System.Windows.Forms.TextBox txtMotivo;
+        private System.Windows.Forms.TextBox txtCorreo;
+        private System.Windows.Forms.Label lblMotivo;
+        private System.Windows.Forms.Label lblCorreo;
+        private System.Windows.Forms.Label lblTitulo;
+        private System.Windows.Forms.Panel pnlHeader;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button btnCerrar;
     }
 }

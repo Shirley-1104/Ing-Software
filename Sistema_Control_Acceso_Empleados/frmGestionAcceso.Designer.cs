@@ -28,9 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblTitulo = new System.Windows.Forms.Label();
+            this.pnlHeader = new System.Windows.Forms.Panel();
+            this.btnCerrar = new System.Windows.Forms.Button();
             this.dgvHistorial = new System.Windows.Forms.DataGridView();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHistorial)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTitulo
@@ -40,37 +47,91 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTitulo.AutoSize = true;
             this.lblTitulo.BackColor = System.Drawing.Color.Transparent;
-            this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.lblTitulo.Location = new System.Drawing.Point(11, 73);
+            this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.lblTitulo.Location = new System.Drawing.Point(22, 72);
             this.lblTitulo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(271, 32);
+            this.lblTitulo.Size = new System.Drawing.Size(305, 37);
             this.lblTitulo.TabIndex = 1;
             this.lblTitulo.Text = "Historial de acceso de:";
             // 
+            // pnlHeader
+            // 
+            this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(45)))), ((int)(((byte)(55)))));
+            this.pnlHeader.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlHeader.Controls.Add(this.pictureBox1);
+            this.pnlHeader.Controls.Add(this.btnCerrar);
+            this.pnlHeader.Location = new System.Drawing.Point(-2, -2);
+            this.pnlHeader.Name = "pnlHeader";
+            this.pnlHeader.Size = new System.Drawing.Size(580, 47);
+            this.pnlHeader.TabIndex = 10;
+            this.pnlHeader.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlHeader_MouseDown);
+            // 
+            // btnCerrar
+            // 
+            this.btnCerrar.BackColor = System.Drawing.Color.DarkRed;
+            this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCerrar.Location = new System.Drawing.Point(528, -1);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(51, 47);
+            this.btnCerrar.TabIndex = 0;
+            this.btnCerrar.UseVisualStyleBackColor = false;
+            this.btnCerrar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnCerrar_MouseDown);
+            // 
             // dgvHistorial
             // 
+            this.dgvHistorial.AllowUserToAddRows = false;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(229)))), ((int)(((byte)(235)))));
+            this.dgvHistorial.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvHistorial.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvHistorial.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.dgvHistorial.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvHistorial.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvHistorial.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvHistorial.Location = new System.Drawing.Point(58, 119);
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(110)))), ((int)(((byte)(165)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvHistorial.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvHistorial.Location = new System.Drawing.Point(46, 111);
             this.dgvHistorial.Margin = new System.Windows.Forms.Padding(2);
             this.dgvHistorial.Name = "dgvHistorial";
+            this.dgvHistorial.RowHeadersVisible = false;
             this.dgvHistorial.RowHeadersWidth = 62;
             this.dgvHistorial.RowTemplate.Height = 28;
-            this.dgvHistorial.Size = new System.Drawing.Size(364, 199);
-            this.dgvHistorial.TabIndex = 2;
+            this.dgvHistorial.Size = new System.Drawing.Size(470, 279);
+            this.dgvHistorial.TabIndex = 11;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Sistema_Control_Acceso_Empleados.Properties.Resources.Logotipo;
+            this.pictureBox1.Location = new System.Drawing.Point(-1, -5);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(153, 51);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 10;
+            this.pictureBox1.TabStop = false;
             // 
             // frmGestionAcceso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::Sistema_Control_Acceso_Empleados.Properties.Resources.acceso2;
-            this.ClientSize = new System.Drawing.Size(487, 329);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
+            this.ClientSize = new System.Drawing.Size(577, 428);
             this.Controls.Add(this.dgvHistorial);
+            this.Controls.Add(this.pnlHeader);
             this.Controls.Add(this.lblTitulo);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmGestionAcceso";
             this.Text = "frmGestionAcceso";
+            this.Load += new System.EventHandler(this.frmGestionAcceso_Load);
+            this.pnlHeader.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvHistorial)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -79,6 +140,9 @@
         #endregion
 
         private System.Windows.Forms.Label lblTitulo;
+        private System.Windows.Forms.Panel pnlHeader;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btnCerrar;
         private System.Windows.Forms.DataGridView dgvHistorial;
     }
 }

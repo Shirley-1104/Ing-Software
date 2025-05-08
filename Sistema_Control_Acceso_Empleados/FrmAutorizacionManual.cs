@@ -17,25 +17,6 @@ namespace Sistema_Control_Acceso_Empleados
             InitializeComponent();
         }
 
-        private void btnAutorizar_Click(object sender, EventArgs e)
-        {
-            string correo = txtCorreoUser.Text.Trim();
-            string motivo = txtMotivo.Text.Trim();
-
-            if (correo == "" || motivo == "")
-            {
-                lblResultado.Text = "Debe completar todos los campos.";
-                lblResultado.ForeColor = Color.Red;
-                return;
-            }
-
-            // Simular guardado en base de datos (más adelante lo implementamos de verdad)
-            string fechaHora = DateTime.Now.ToString();
-
-            lblResultado.ForeColor = Color.Green;
-            lblResultado.Text = $"Acceso autorizado para {correo} el {fechaHora}";
-            // Aquí iría el INSERT en la base de datos
-        }
 
         private void txtCorreoUser_TextChanged(object sender, EventArgs e)
         {
@@ -60,6 +41,22 @@ namespace Sistema_Control_Acceso_Empleados
         private void lblResultado_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnAutorizar_Click_1(object sender, EventArgs e)
+        {
+            string correo = txtCorreo.Text.Trim();
+            string motivo = txtMotivo.Text.Trim();
+        }
+
+        private void pnlHeader_MouseDown(object sender, MouseEventArgs e)
+        {
+            HelperUi.HabilitarMovimiento(this, pnlHeader);
+        }
+
+        private void btnCerrar_MouseDown(object sender, MouseEventArgs e)
+        {
+            this.Close();
         }
     }
 }

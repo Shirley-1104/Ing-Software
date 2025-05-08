@@ -38,18 +38,6 @@ namespace Sistema_Control_Acceso_Empleados
 
         }
 
-        private void dgvHistorial_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0) 
-            {
-                filaSeleccionada = e.RowIndex;
-                DataGridViewRow fila = dgvEmpleados.Rows[e.RowIndex];
-                string nombre = fila.Cells[1].Value?.ToString();
-                string apellido = fila.Cells[2].Value?.ToString();
-                txtSeleccionado.Text = $"{nombre} {apellido}";
-            }
-        }
-
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             if (filaSeleccionada >= 0)
@@ -112,6 +100,33 @@ namespace Sistema_Control_Acceso_Empleados
             {
                 MessageBox.Show("Selecciona un empleado primero.");
             }
+        }
+
+        private void dgvEmpleados_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                filaSeleccionada = e.RowIndex;
+                DataGridViewRow fila = dgvEmpleados.Rows[e.RowIndex];
+                string nombre = fila.Cells[1].Value?.ToString();
+                string apellido = fila.Cells[2].Value?.ToString();
+                txtSeleccionado.Text = $"{nombre} {apellido}";
+            }
+        }
+
+        private void frmEmpleados_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pnlHeader_MouseDown(object sender, MouseEventArgs e)
+        {
+            HelperUi.HabilitarMovimiento(this, pnlHeader);
+        }
+
+        private void btnCerrar_MouseDown(object sender, MouseEventArgs e)
+        {
+            this.Close();
         }
     }
 }

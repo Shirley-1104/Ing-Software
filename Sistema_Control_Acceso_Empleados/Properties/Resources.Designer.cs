@@ -93,6 +93,16 @@ namespace Sistema_Control_Acceso_Empleados.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Admin {
+            get {
+                object obj = ResourceManager.GetObject("Admin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap autorizacion {
             get {
                 object obj = ResourceManager.GetObject("autorizacion", resourceCulture);
@@ -126,6 +136,16 @@ namespace Sistema_Control_Acceso_Empleados.Properties {
         internal static System.Drawing.Bitmap fondo_plano {
             get {
                 object obj = ResourceManager.GetObject("fondo plano", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Logotipo {
+            get {
+                object obj = ResourceManager.GetObject("Logotipo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -130,6 +130,12 @@
   <data name="Prototipo 3 log in" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Prototipo 3 log in.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Logotipo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Logotipo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Camara" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Camara.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="usuario" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\usuario.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -157,7 +163,7 @@
   <data name="usuario2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\usuario2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Camara" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Camara.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Admin" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Admin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

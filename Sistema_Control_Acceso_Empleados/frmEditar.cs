@@ -26,12 +26,27 @@ namespace Sistema_Control_Acceso_Empleados
 
         private void btnRegistro_Click(object sender, EventArgs e)
         {
+            
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
             NombreEditado = txtNombre.Text;
             ApellidoEditado = txtApellidos.Text;
             CorreoEditado = txtCorreo.Text;
 
-            this.DialogResult = DialogResult.OK; 
+            this.DialogResult = DialogResult.OK;
             this.Close();
+        }
+
+        private void pnlHeader_MouseDown(object sender, MouseEventArgs e)
+        {
+            HelperUi.HabilitarMovimiento(this, pnlHeader);
+        }
+
+        private void btnCerrar_MouseDown(object sender, MouseEventArgs e)
+        {
+            this.Close();   
         }
     }
 }

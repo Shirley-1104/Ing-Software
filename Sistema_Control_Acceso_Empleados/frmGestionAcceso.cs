@@ -28,6 +28,20 @@ namespace Sistema_Control_Acceso_Empleados
             dgvHistorial.Rows.Add(DateTime.Now.ToString(), "QR", "-");
             dgvHistorial.Rows.Add(DateTime.Now.AddDays(-1).ToString(), "Manual", "Ingreso por contingencia");
         }
-       
+
+        private void frmGestionAcceso_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pnlHeader_MouseDown(object sender, MouseEventArgs e)
+        {
+            HelperUi.HabilitarMovimiento(this, pnlHeader);
+        }
+
+        private void btnCerrar_MouseDown(object sender, MouseEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

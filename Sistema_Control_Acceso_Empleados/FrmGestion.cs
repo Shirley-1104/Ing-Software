@@ -51,5 +51,15 @@ namespace Sistema_Control_Acceso_Empleados
             frmEmpleados frm = new frmEmpleados();
             frm.ShowDialog();
         }
+
+        private void pnlHeader_MouseDown(object sender, MouseEventArgs e)
+        {
+            HelperUi.HabilitarMovimiento(this, pnlHeader);
+        }
+
+        private void btnCerrar_MouseDown(object sender, MouseEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

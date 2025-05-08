@@ -15,6 +15,8 @@ namespace Sistema_Control_Acceso_Empleados
         public FrmHistorial()
         {
             InitializeComponent();
+            HelperUi.RedondearBordes(this, 20);
+            HelperUi.AplicarBordeRedondeado(this, 20, Color.FromArgb(45, 45, 48), 10f);
         }
 
         private void FrmHistorial_Load(object sender, EventArgs e)
@@ -28,6 +30,8 @@ namespace Sistema_Control_Acceso_Empleados
             // Simular datos
             dgvHistorial.Rows.Add(DateTime.Now.ToString(), "QR", "-");
             dgvHistorial.Rows.Add(DateTime.Now.AddDays(-1).ToString(), "Manual", "Ingreso por contingencia");
+            dgvHistorial.Rows.Add(DateTime.Now.AddDays(-1).ToString(), "Manual", "Ingreso por contingencia");
+            dgvHistorial.Rows.Add(DateTime.Now.AddDays(-1).ToString(), "Manual", "Ingreso por contingencia");
         }
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
@@ -38,6 +42,25 @@ namespace Sistema_Control_Acceso_Empleados
         }
 
         private void lblTitulo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pnlHeader_MouseDown(object sender, MouseEventArgs e)
+        {
+            HelperUi.HabilitarMovimiento(this, pnlHeader);
+        }
+
+        private void FrmHistorial_MouseDown(object sender, MouseEventArgs e)
+        {
+        }
+
+        private void btnCerrar_MouseDown(object sender, MouseEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void pnlHeader_Paint(object sender, PaintEventArgs e)
         {
 
         }

@@ -22,5 +22,20 @@ namespace Sistema_Control_Acceso_Empleados
         {
 
         }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCerrar_MouseDown(object sender, MouseEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void pnlHeader_MouseDown(object sender, MouseEventArgs e)
+        {
+            HelperUi.HabilitarMovimiento(this, pnlHeader);
+        }
     }
 }
