@@ -16,6 +16,8 @@ namespace Sistema_Control_Acceso_Empleados
         {
             InitializeComponent();
             CargarDgv();
+            HelperUi.RedondearBordes(this, 20);
+            HelperUi.AplicarBordeRedondeado(this, 20, Color.FromArgb(45, 45, 48), 10f);
             lblTitulo.Text = $"Historial de acceso de: {nombre}";
         }
         private void CargarDgv()

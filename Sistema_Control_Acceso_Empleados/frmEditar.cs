@@ -19,6 +19,8 @@ namespace Sistema_Control_Acceso_Empleados
         public frmEditar(string nombre, string apellido, string correo)
         {
             InitializeComponent();
+            HelperUi.RedondearBordes(this, 20);
+            HelperUi.AplicarBordeRedondeado(this, 20, Color.FromArgb(45, 45, 48), 10f);
             txtNombre.Text = nombre;
             txtApellidos.Text = apellido;
             txtCorreo.Text = correo;

@@ -19,6 +19,8 @@ namespace Sistema_Control_Acceso_Empleados
         {
             InitializeComponent();
             cargarDGV();
+            HelperUi.RedondearBordes(this, 20);
+            HelperUi.AplicarBordeRedondeado(this, 20, Color.FromArgb(45, 45, 48), 10f);
         }
         private void cargarDGV()
         {
