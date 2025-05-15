@@ -32,12 +32,29 @@ namespace Sistema_Control_Acceso_Empleados.Services
             FuenteVideo = new VideoCaptureDevice(Dispositivos[0].MonikerString);
             FuenteVideo.NewFrame += (sender, args) =>
             {
-                Bitmap frame = (Bitmap)args.Frame.Clone();
-                FrameRecibido?.Invoke(frame);
+                try
+                {
+                    // Clona el frame original
+                    Bitmap frameParaMostrar = (Bitmap)args.Frame.Clone();
+                    Bitmap frameParaDecodificar = (Bitmap)args.Frame.Clone();
 
-                var resultado = lectorQR.Decode(frame);
-                if (resultado != null)
-                    CodigoDetectado?.Invoke(resultado.Text);
+                    // Mostrar en PictureBox
+                    FrameRecibido?.Invoke(frameParaMostrar);
+
+                    // Intentar decodificar
+                    var resultado = lectorQR.Decode(frameParaDecodificar);
+                    if (resultado != null)
+                    {
+                        CodigoDetectado?.Invoke(resultado.Text);
+                    }
+
+                    frameParaDecodificar.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    // Por si se produce otra excepción, evitar que crashee la app
+                    Console.WriteLine("Error al procesar frame: " + ex.Message);
+                }
             };
 
             FuenteVideo.Start();
