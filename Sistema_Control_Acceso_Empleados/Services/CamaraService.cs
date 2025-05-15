@@ -34,14 +34,9 @@ namespace Sistema_Control_Acceso_Empleados.Services
             {
                 try
                 {
-                    // Clona el frame original
                     Bitmap frameParaMostrar = (Bitmap)args.Frame.Clone();
                     Bitmap frameParaDecodificar = (Bitmap)args.Frame.Clone();
-
-                    // Mostrar en PictureBox
                     FrameRecibido?.Invoke(frameParaMostrar);
-
-                    // Intentar decodificar
                     var resultado = lectorQR.Decode(frameParaDecodificar);
                     if (resultado != null)
                     {
@@ -52,7 +47,6 @@ namespace Sistema_Control_Acceso_Empleados.Services
                 }
                 catch (Exception ex)
                 {
-                    // Por si se produce otra excepción, evitar que crashee la app
                     Console.WriteLine("Error al procesar frame: " + ex.Message);
                 }
             };
