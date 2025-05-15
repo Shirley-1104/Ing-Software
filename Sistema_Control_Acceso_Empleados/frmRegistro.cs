@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Sistema_Control_Acceso_Empleados.Models;
+using Sistema_Control_Acceso_Empleados.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -38,6 +40,26 @@ namespace Sistema_Control_Acceso_Empleados
         private void pnlHeader_MouseDown(object sender, MouseEventArgs e)
         {
             HelperUi.HabilitarMovimiento(this, pnlHeader);
+        }
+
+        private void btnRegistro_Click(object sender, EventArgs e)
+        {
+            string clave = txtClave.Text.Trim();
+            string claveHash = BCrypt.Net.BCrypt.HashPassword(clave);
+            var usuario = new Usuario
+            {
+                Nombre = txtNombre.Text.Trim(),
+                Apellido = txtApellidos.Text.Trim(),
+                Correo = txtCorreo.Text.Trim(),
+                Contraseña = claveHash,
+                Rol = "empleado"
+            };
+
+            var service = new UsuarioService();
+            if (service.RegistrarUsuario(usuario))
+                MessageBox.Show("Registro exitoso");
+            else
+                MessageBox.Show("Error en el registro");
         }
     }
 }

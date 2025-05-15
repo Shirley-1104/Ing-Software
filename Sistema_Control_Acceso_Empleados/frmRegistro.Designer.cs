@@ -124,6 +124,7 @@
             this.btnRegistro.TabIndex = 5;
             this.btnRegistro.Text = "Registrar";
             this.btnRegistro.UseVisualStyleBackColor = false;
+            this.btnRegistro.Click += new System.EventHandler(this.btnRegistro_Click);
             // 
             // txtClave
             // 
