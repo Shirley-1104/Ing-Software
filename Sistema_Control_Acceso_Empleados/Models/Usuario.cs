@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sistema_Control_Acceso_Empleados.Models
 {
-    internal class Usuario
+    public class Usuario
     {
         public int Id { get; set; }
         public string Nombre { get; set; }

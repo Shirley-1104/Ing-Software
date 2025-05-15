@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Sistema_Control_Acceso_Empleados.Services
 {
-    internal class UsuarioService
+    public class UsuarioService
     {
         public bool RegistrarUsuario(Usuario usuario)
         {

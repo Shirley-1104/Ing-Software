@@ -32,10 +32,11 @@
             this.btnSolicitarAcceso = new System.Windows.Forms.Button();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.pnlHeader = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnCerrar = new System.Windows.Forms.Button();
             this.btnSkip = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pbScanner = new System.Windows.Forms.PictureBox();
+            this.lblQR = new System.Windows.Forms.Label();
             this.pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbScanner)).BeginInit();
@@ -102,6 +103,16 @@
             this.pnlHeader.TabIndex = 8;
             this.pnlHeader.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlHeader_MouseDown);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Sistema_Control_Acceso_Empleados.Properties.Resources.Logotipo;
+            this.pictureBox1.Location = new System.Drawing.Point(0, -4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(153, 51);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            // 
             // btnCerrar
             // 
             this.btnCerrar.BackColor = System.Drawing.Color.DarkRed;
@@ -127,16 +138,6 @@
             this.btnSkip.UseVisualStyleBackColor = false;
             this.btnSkip.Click += new System.EventHandler(this.btnSkip_Click);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Sistema_Control_Acceso_Empleados.Properties.Resources.Logotipo;
-            this.pictureBox1.Location = new System.Drawing.Point(0, -4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(153, 51);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            // 
             // pbScanner
             // 
             this.pbScanner.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -148,6 +149,15 @@
             this.pbScanner.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbScanner.TabIndex = 5;
             this.pbScanner.TabStop = false;
+            this.pbScanner.Click += new System.EventHandler(this.pbScanner_Click);
+            // 
+            // lblQR
+            // 
+            this.lblQR.AutoSize = true;
+            this.lblQR.Location = new System.Drawing.Point(399, 136);
+            this.lblQR.Name = "lblQR";
+            this.lblQR.Size = new System.Drawing.Size(0, 13);
+            this.lblQR.TabIndex = 10;
             // 
             // frmQR
             // 
@@ -155,6 +165,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
             this.ClientSize = new System.Drawing.Size(577, 428);
+            this.Controls.Add(this.lblQR);
             this.Controls.Add(this.btnSkip);
             this.Controls.Add(this.pnlHeader);
             this.Controls.Add(this.lblTitulo);
@@ -164,6 +175,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmQR";
             this.Text = "frmQR";
+            this.Load += new System.EventHandler(this.frmQR_Load);
             this.pnlHeader.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbScanner)).EndInit();
@@ -182,5 +194,6 @@
         private System.Windows.Forms.Button btnSkip;
         private System.Windows.Forms.Button btnCerrar;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label lblQR;
     }
 }
