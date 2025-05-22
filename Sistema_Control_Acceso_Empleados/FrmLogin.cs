@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sistema_Control_Acceso_Empleados.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,6 +15,7 @@ namespace Sistema_Control_Acceso_Empleados
 {
     public partial class FrmLogin : Form
     {
+       
         public FrmLogin()
         {
             InitializeComponent();
@@ -23,6 +25,7 @@ namespace Sistema_Control_Acceso_Empleados
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            var usuarioService = new UsuarioService();
             string correo = txtCorreo.Text.Trim();
             string clave = txtClave.Text;
 
@@ -38,9 +41,30 @@ namespace Sistema_Control_Acceso_Empleados
                 frm.Show();
                 this.Hide();
             }
+            var usuario = usuarioService.AutenticarUsuario(correo, clave);
+
+            if (usuario != null)
+            {
+                MessageBox.Show("Bienvenido " + usuario.Nombre + " (" + usuario.Rol + ")");
+
+                if (usuario.Rol == "administrador")
+                {
+                    FrmGestion gestion = new FrmGestion();
+                    gestion.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    frmQR frm = new frmQR();
+                    frm.Show();
+                    this.Hide();
+                }
+
+                this.Hide();
+            }
             else
             {
-                MessageBox.Show("Credenciales incorrectas");
+                MessageBox.Show("Correo o contraseña incorrectos.");
             }
         }
 

@@ -44,13 +44,15 @@ namespace Sistema_Control_Acceso_Empleados.Services
                     cmdQR.Parameters.AddWithValue("@fecha_generacion", fechaGeneracion);
 
                     cmdQR.ExecuteNonQuery();
+                    byte[] qrBytes = QrService.GenerarQRBytes(codigoQR);
+                    EmailService.EnviarCorreoConQR(usuario.Correo, codigoQR, qrBytes);
 
                     return true;
                 }
             }
             catch (MySqlException ex)
             {
-                if (ex.Number == 1062) 
+                if (ex.Number == 1062)
                 {
                     MessageBox.Show("El correo ya está registrado. Usa otro.", "Error de duplicado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
@@ -67,7 +69,47 @@ namespace Sistema_Control_Acceso_Empleados.Services
 
                 return false;
             }
-            
+
+        }
+        public Usuario AutenticarUsuario(string correo, string contraseña)
+        {
+            try
+            {
+                var conn = BaseDatos.GetConnection();
+                conn.Open();
+
+                string query = "SELECT * FROM usuarios WHERE correo = @correo";
+                var cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@correo", correo);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        string hash = reader["contraseña"].ToString();
+
+
+                        if (BCrypt.Net.BCrypt.Verify(contraseña, hash))
+                        {
+                            return new Usuario
+                            {
+                                Id = Convert.ToInt32(reader["id"]),
+                                Nombre = reader["nombre"].ToString(),
+                                Apellido = reader["apellido"].ToString(),
+                                Correo = reader["correo"].ToString(),
+                                Rol = reader["rol"].ToString()
+                            };
+                        }
+                    }
+                }
+
+                return null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al autenticar usuario: " + ex.Message);
+                return null;
+            }
         }
     }
 }
