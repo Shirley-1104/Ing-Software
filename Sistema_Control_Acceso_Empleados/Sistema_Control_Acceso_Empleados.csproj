@@ -192,6 +192,7 @@
     <Compile Include="Services\CamaraService.cs" />
     <Compile Include="Services\EmailService.cs" />
     <Compile Include="Services\QrService.cs" />
+    <Compile Include="Services\UsuarioActual.cs" />
     <Compile Include="Services\UsuarioService.cs" />
     <EmbeddedResource Include="FrmAutorizacionManual.resx">
       <DependentUpon>FrmAutorizacionManual.cs</DependentUpon>

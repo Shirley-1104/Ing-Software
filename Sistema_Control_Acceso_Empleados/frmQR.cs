@@ -82,7 +82,23 @@ namespace Sistema_Control_Acceso_Empleados
                 {
                     lblQR.Text = codigo;
                     camara.Detener();
-                    MessageBox.Show($"Código escaneado: {codigo}");
+                    var usuario = UsuarioActual.UsuarioLogueado;
+                    if (usuario == null)
+                    {
+                        MessageBox.Show("No hay un usuario autenticado.");
+                        return;
+                    }
+
+                    var qrValido = QrService.ValidarCodigoQR(usuario.Id, codigo);
+
+                    if (qrValido)
+                    {
+                        MessageBox.Show("Acceso permitido. Código válido.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Acceso denegado. Código QR inválido o no corresponde al usuario.");
+                    }
                 }));
             };
         }

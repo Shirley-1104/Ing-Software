@@ -7,6 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using ZXing.QrCode.Internal;
 using QRCoder;
+using MySql.Data.MySqlClient;
+using Sistema_Control_Acceso_Empleados.Data;
+using System.Windows;
 
 namespace Sistema_Control_Acceso_Empleados.Services
 {
@@ -26,5 +29,32 @@ namespace Sistema_Control_Acceso_Empleados.Services
                 }
             }
         }
+        public static bool ValidarCodigoQR(int usuarioId, string codigoEscaneado)
+        {
+            try
+            {
+                var conn = BaseDatos.GetConnection();
+                conn.Open();
+
+                string query = @"SELECT COUNT(*) FROM codigos_qr 
+                         WHERE usuario_id = @usuarioId 
+                         AND codigo = @codigo 
+                         AND valido = 1";
+
+                var cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@usuarioId", usuarioId);
+                cmd.Parameters.AddWithValue("@codigo", codigoEscaneado);
+
+                int count = Convert.ToInt32(cmd.ExecuteScalar());
+                return count > 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al validar Qr");
+                return false;
+            }
+        }
     }
+    
+
 }

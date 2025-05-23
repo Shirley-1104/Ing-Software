@@ -46,7 +46,7 @@ namespace Sistema_Control_Acceso_Empleados
             if (usuario != null)
             {
                 MessageBox.Show("Bienvenido " + usuario.Nombre + " (" + usuario.Rol + ")");
-
+                UsuarioActual.UsuarioLogueado = usuario;
                 if (usuario.Rol == "administrador")
                 {
                     FrmGestion gestion = new FrmGestion();
