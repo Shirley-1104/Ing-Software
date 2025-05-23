@@ -3,6 +3,7 @@ using Sistema_Control_Acceso_Empleados.Data;
 using Sistema_Control_Acceso_Empleados.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -111,5 +112,40 @@ namespace Sistema_Control_Acceso_Empleados.Services
                 return null;
             }
         }
+        public List<Usuario> ObtenerUsuariosEmpleados()
+        {
+            List<Usuario> empleados = new List<Usuario>();
+
+            try
+            {
+                using (var conn = BaseDatos.GetConnection())
+                {
+                    conn.Open();
+                    string query = "SELECT * FROM usuarios WHERE rol = 'empleado'";
+                    using (var cmd = new MySqlCommand(query, conn))
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            empleados.Add(new Usuario
+                            {
+                                Id = Convert.ToInt32(reader["id"]),
+                                Nombre = reader["nombre"].ToString(),
+                                Apellido = reader["apellido"].ToString(),
+                                Correo = reader["correo"].ToString(),
+                                Rol = reader["rol"].ToString()
+                            });
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al obtener usuarios empleados: " + ex.Message);
+            }
+
+            return empleados;
+        }
+
     }
 }

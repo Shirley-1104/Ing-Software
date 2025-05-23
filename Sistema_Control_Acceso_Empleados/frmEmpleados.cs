@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Sistema_Control_Acceso_Empleados.Models;
+using Sistema_Control_Acceso_Empleados.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,26 +15,21 @@ namespace Sistema_Control_Acceso_Empleados
     public partial class frmEmpleados : Form
 
     {
+        private List<Usuario> listaUsuarios = new List<Usuario>();
+        private UsuarioService usuarioService = new UsuarioService();
 
         private int filaSeleccionada = -1;
         public frmEmpleados()
         {
             InitializeComponent();
-            cargarDGV();
+            CargarEmpleados();
             HelperUi.RedondearBordes(this, 20);
             HelperUi.AplicarBordeRedondeado(this, 20, Color.FromArgb(45, 45, 48), 10f);
         }
-        private void cargarDGV()
+        private void CargarEmpleados()
         {
-            dgvEmpleados.ColumnCount = 4;
-
-            dgvEmpleados.Columns[0].Name = "Id";
-            dgvEmpleados.Columns[1].Name = "Nombre";
-            dgvEmpleados.Columns[2].Name = "Apellido";
-            dgvEmpleados.Columns[3].Name = "Correo";
-
-            dgvEmpleados.Rows.Add(1,"Juan Manuel", "Zapata Olaya", "juan@gmail.com");
-            dgvEmpleados.Rows.Add(2,"Camilo", "Rodriguez Beltran", "camilo@gmail.com");
+            listaUsuarios = usuarioService.ObtenerUsuariosEmpleados();
+            dgvEmpleados.DataSource = listaUsuarios;
         }
 
         private void dgvHistorial_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -129,6 +126,11 @@ namespace Sistema_Control_Acceso_Empleados
         private void btnCerrar_MouseDown(object sender, MouseEventArgs e)
         {
             this.Close();
+        }
+
+        private void dgvEmpleados_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

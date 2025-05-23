@@ -29,25 +29,13 @@ namespace Sistema_Control_Acceso_Empleados
             string correo = txtCorreo.Text.Trim();
             string clave = txtClave.Text;
 
-            if (correo == "admin@empresa.com" && clave == "1234")
-            {
-                FrmGestion gestion = new FrmGestion();
-                gestion.Show();
-                this.Hide();
-            }
-            else if (correo == "empleado@empresa.com" && clave == "1234")
-            {
-                frmQR frm = new frmQR();
-                frm.Show();
-                this.Hide();
-            }
             var usuario = usuarioService.AutenticarUsuario(correo, clave);
 
             if (usuario != null)
             {
                 MessageBox.Show("Bienvenido " + usuario.Nombre + " (" + usuario.Rol + ")");
                 UsuarioActual.UsuarioLogueado = usuario;
-                if (usuario.Rol == "administrador")
+                if (usuario.Rol == "admin")
                 {
                     FrmGestion gestion = new FrmGestion();
                     gestion.Show();

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sistema_Control_Acceso_Empleados.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,17 +22,12 @@ namespace Sistema_Control_Acceso_Empleados
 
         private void FrmHistorial_Load(object sender, EventArgs e)
         {
-            // Crear columnas
-            dgvHistorial.ColumnCount = 3;
-            dgvHistorial.Columns[0].Name = "Fecha";
-            dgvHistorial.Columns[1].Name = "Tipo de Acceso";
-            dgvHistorial.Columns[2].Name = "Motivo";
-
-            // Simular datos
-            dgvHistorial.Rows.Add(DateTime.Now.ToString(), "QR", "-");
-            dgvHistorial.Rows.Add(DateTime.Now.AddDays(-1).ToString(), "Manual", "Ingreso por contingencia");
-            dgvHistorial.Rows.Add(DateTime.Now.AddDays(-1).ToString(), "Manual", "Ingreso por contingencia");
-            dgvHistorial.Rows.Add(DateTime.Now.AddDays(-1).ToString(), "Manual", "Ingreso por contingencia");
+            CargarAccesos();
+        }
+        private void CargarAccesos()
+        {
+            var tabla = AccesoService.ObtenerAccesos();
+            dgvHistorial.DataSource = tabla;
         }
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)

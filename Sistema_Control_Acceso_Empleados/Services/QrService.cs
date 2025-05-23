@@ -46,7 +46,23 @@ namespace Sistema_Control_Acceso_Empleados.Services
                 cmd.Parameters.AddWithValue("@codigo", codigoEscaneado);
 
                 int count = Convert.ToInt32(cmd.ExecuteScalar());
-                return count > 0;
+                if (count > 0)
+                {
+                    string insert = @"INSERT INTO accesos (usuario_id, fecha_hora, metodo, motivo, llego_tarde) 
+                              VALUES (@usuarioId, @fechaHora, @metodo, NULL, @llegoTarde)";
+
+                    var insertCmd = new MySqlCommand(insert, conn);
+                    insertCmd.Parameters.AddWithValue("@usuarioId", usuarioId);
+                    insertCmd.Parameters.AddWithValue("@fechaHora", DateTime.Now);
+                    insertCmd.Parameters.AddWithValue("@metodo", "qr");
+                    insertCmd.Parameters.AddWithValue("@llegoTarde", false);
+
+                    insertCmd.ExecuteNonQuery();
+
+                    return true;
+                }
+
+                return false;
             }
             catch (Exception ex)
             {
