@@ -22,7 +22,7 @@ namespace Sistema_Control_Acceso_Empleados.Services
                 {
                     conn.Open();
                     string query = @"
-                SELECT a.id, u.nombres, u.apellidos, a.fecha_hora, a.metodo, a.motivo, a.llego_tarde
+                SELECT u.nombre, u.apellido, a.fecha_hora, a.metodo, a.motivo, a.llego_tarde
                 FROM accesos a
                 INNER JOIN usuarios u ON a.usuario_id = u.id
                 ORDER BY a.fecha_hora DESC";

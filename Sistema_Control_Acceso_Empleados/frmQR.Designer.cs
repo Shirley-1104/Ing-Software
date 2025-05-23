@@ -174,6 +174,7 @@
             this.Controls.Add(this.btnCerrarSesion);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmQR";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmQR";
             this.Load += new System.EventHandler(this.frmQR_Load);
             this.pnlHeader.ResumeLayout(false);
