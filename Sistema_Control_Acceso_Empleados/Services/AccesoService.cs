@@ -52,7 +52,7 @@ namespace Sistema_Control_Acceso_Empleados.Services
                     conn.Open();
                     string query = @"
                 SELECT a.id, a.fecha_hora, a.metodo, a.motivo, a.llego_tarde,
-                       u.nombres, u.apellidos
+                       u.nombre, u.apellido
                 FROM accesos a
                 INNER JOIN usuarios u ON a.usuario_id = u.id
                 WHERE a.usuario_id = @usuarioId

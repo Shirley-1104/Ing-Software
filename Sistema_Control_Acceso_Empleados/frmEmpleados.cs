@@ -28,8 +28,15 @@ namespace Sistema_Control_Acceso_Empleados
         }
         private void CargarEmpleados()
         {
-            listaUsuarios = usuarioService.ObtenerUsuariosEmpleados();
-            dgvEmpleados.DataSource = listaUsuarios;
+            try
+            {
+                listaUsuarios = usuarioService.ObtenerUsuariosEmpleados();
+                dgvEmpleados.DataSource = listaUsuarios;
+            }catch(Exception ex)
+            {
+                MessageBox.Show($"Error al cargar los empleados: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void dgvHistorial_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -41,46 +48,93 @@ namespace Sistema_Control_Acceso_Empleados
         {
             if (filaSeleccionada >= 0)
             {
+                int usuarioId = Convert.ToInt32(dgvEmpleados.Rows[filaSeleccionada].Cells[0].Value);
+                string nombreCompleto = $"{dgvEmpleados.Rows[filaSeleccionada].Cells[1].Value} {dgvEmpleados.Rows[filaSeleccionada].Cells[2].Value}";
+
                 DialogResult confirmacion = MessageBox.Show(
-            "¿Estás seguro de que deseas eliminar este empleado?",
-            "Confirmar eliminación",
-            MessageBoxButtons.YesNo,
-            MessageBoxIcon.Warning
-        );
+                    $"¿Está seguro que desea eliminar al empleado {nombreCompleto}?",
+                    "Confirmar eliminación",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
 
                 if (confirmacion == DialogResult.Yes)
                 {
-                    dgvEmpleados.Rows.RemoveAt(filaSeleccionada);
-                    filaSeleccionada = -1;
-                    txtSeleccionado.Clear();
+                    try
+                    {
+                        if (usuarioService.EliminarUsuario(usuarioId))
+                        {
+                            MessageBox.Show("Empleado eliminado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            CargarEmpleados();
+                            txtSeleccionado.Text = "";
+                            filaSeleccionada = -1;
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se pudo eliminar el empleado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error al eliminar empleado: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
             else
             {
-                MessageBox.Show("Por favor, selecciona una fila primero.");
+                MessageBox.Show("Seleccione un empleado para eliminar.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
             if (filaSeleccionada >= 0)
             {
-                DataGridViewRow fila = dgvEmpleados.Rows[filaSeleccionada];
-                string nombre = fila.Cells[1].Value?.ToString();
-                string apellido = fila.Cells[2].Value?.ToString();
-                string correo = fila.Cells[3].Value?.ToString();
-
-                frmEditar editor = new frmEditar(nombre, apellido, correo);
-                if (editor.ShowDialog() == DialogResult.OK)
+                try
                 {
-                    fila.Cells[1].Value = editor.NombreEditado;
-                    fila.Cells[2].Value = editor.ApellidoEditado;
-                    fila.Cells[3].Value = editor.CorreoEditado;
+                    Usuario usuarioSeleccionado = listaUsuarios[filaSeleccionada];
+
+                    frmEditar editor = new frmEditar(
+                        usuarioSeleccionado.Nombre,
+                        usuarioSeleccionado.Apellido,
+                        usuarioSeleccionado.Correo
+                    );
+
+                    if (editor.ShowDialog() == DialogResult.OK)
+                    {
+                        Usuario usuarioEditado = new Usuario
+                        {
+                            Id = usuarioSeleccionado.Id,
+                            Nombre = editor.NombreEditado,
+                            Apellido = editor.ApellidoEditado,
+                            Correo = editor.CorreoEditado,
+                            Rol = usuarioSeleccionado.Rol
+                        };
+
+                        if (editor.CambioContraseña)
+                        {
+                            usuarioEditado.Contraseña = editor.ContraseñaEditada;
+                        }
+
+                        if (usuarioService.EditarUsuario(usuarioEditado))
+                        {
+                            MessageBox.Show("Empleado actualizado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            CargarEmpleados();
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se pudo actualizar el empleado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error al editar empleado: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                MessageBox.Show("Selecciona un empleado primero.");
+                MessageBox.Show("Selecciona un empleado primero.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -88,16 +142,26 @@ namespace Sistema_Control_Acceso_Empleados
         {
             if (filaSeleccionada >= 0)
             {
-                DataGridViewRow fila = dgvEmpleados.Rows[filaSeleccionada];
-                string id = fila.Cells[0].Value?.ToString();
-                string nombre = fila.Cells[1].Value?.ToString();
+                try
+                {
+                    Usuario usuarioSeleccionado = listaUsuarios[filaSeleccionada];
+                    int usuarioId = usuarioSeleccionado.Id;
+                    string nombreCompleto = $"{usuarioSeleccionado.Nombre} {usuarioSeleccionado.Apellido}";
 
-                frmGestionAcceso ventana = new frmGestionAcceso(id, nombre);
-                ventana.ShowDialog(); // o .Show() si quieres no modal
+                    // Abre el formulario de gestión de accesos y pasa el ID de usuario y nombre
+                    frmGestionAcceso ventanaAccesos = new frmGestionAcceso(usuarioId, nombreCompleto);
+                    ventanaAccesos.ShowDialog();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error al abrir gestión de accesos: {ex.Message}",
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
             {
-                MessageBox.Show("Selecciona un empleado primero.");
+                MessageBox.Show("Selecciona un empleado primero.",
+                    "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

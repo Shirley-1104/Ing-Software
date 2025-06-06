@@ -26,8 +26,16 @@ namespace Sistema_Control_Acceso_Empleados
         }
         private void CargarAccesos()
         {
-            var tabla = AccesoService.ObtenerAccesos();
-            dgvHistorial.DataSource = tabla;
+            try
+            {
+                var usuario = UsuarioActual.UsuarioLogueado;
+                var tabla = AccesoService.ObtenerAccesosPorUsuario(usuario.Id);
+                dgvHistorial.DataSource = tabla;
+            }catch(Exception ex)
+            {
+                MessageBox.Show("Error al cargar el historial: " + ex.Message);
+            }
+
         }
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)

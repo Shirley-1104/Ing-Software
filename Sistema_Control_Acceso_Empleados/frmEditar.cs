@@ -15,6 +15,8 @@ namespace Sistema_Control_Acceso_Empleados
         public string NombreEditado { get; private set; }
         public string ApellidoEditado { get; private set; }
         public string CorreoEditado { get; private set; }
+        public string ContraseñaEditada { get; private set; }
+        public bool CambioContraseña { get; private set; }
 
         public frmEditar(string nombre, string apellido, string correo)
         {
@@ -24,18 +26,51 @@ namespace Sistema_Control_Acceso_Empleados
             txtNombre.Text = nombre;
             txtApellidos.Text = apellido;
             txtCorreo.Text = correo;
+
+            txtContraseña.Text = "";
+            txtConfirmarContraseña.Text = "";
         }
 
         private void btnRegistro_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            NombreEditado = txtNombre.Text;
-            ApellidoEditado = txtApellidos.Text;
-            CorreoEditado = txtCorreo.Text;
+
+            if (string.IsNullOrWhiteSpace(txtNombre.Text) ||
+                string.IsNullOrWhiteSpace(txtApellidos.Text) ||
+                string.IsNullOrWhiteSpace(txtCorreo.Text))
+            {
+                MessageBox.Show("Nombre, apellidos y correo son campos obligatorios.",
+                    "Datos incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (!string.IsNullOrWhiteSpace(txtContraseña.Text))
+            {
+
+                if (txtContraseña.Text != txtConfirmarContraseña.Text)
+                {
+                    MessageBox.Show("Las contraseñas no coinciden.",
+                        "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+  
+                string clave = txtContraseña.Text.Trim();
+                ContraseñaEditada = BCrypt.Net.BCrypt.HashPassword(clave);
+                CambioContraseña = true;
+            }
+            else
+            {
+                ContraseñaEditada = null;
+                CambioContraseña = false;
+            }
+
+            NombreEditado = txtNombre.Text.Trim();
+            ApellidoEditado = txtApellidos.Text.Trim();
+            CorreoEditado = txtCorreo.Text.Trim();
 
             this.DialogResult = DialogResult.OK;
             this.Close();
@@ -48,7 +83,7 @@ namespace Sistema_Control_Acceso_Empleados
 
         private void btnCerrar_MouseDown(object sender, MouseEventArgs e)
         {
-            this.Close();   
+            this.Close();
         }
     }
 }

@@ -15,7 +15,6 @@ namespace Sistema_Control_Acceso_Empleados
 {
     public partial class FrmLogin : Form
     {
-       
         public FrmLogin()
         {
             InitializeComponent();
@@ -23,12 +22,46 @@ namespace Sistema_Control_Acceso_Empleados
             HelperUi.AplicarBordeRedondeado(this, 20, Color.FromArgb(45, 45, 48), 10f);
         }
 
+        private bool EsCorreoValido(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            var usuarioService = new UsuarioService();
             string correo = txtCorreo.Text.Trim();
             string clave = txtClave.Text;
 
+            if (string.IsNullOrEmpty(correo))
+            {
+                MessageBox.Show("El campo de correo no puede estar vacío.", "Datos incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtCorreo.Focus();
+                return;
+            }
+
+            if (!EsCorreoValido(correo))
+            {
+                MessageBox.Show("El formato del correo electrónico no es válido.", "Formato inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtCorreo.Focus();
+                return;
+            }
+
+            if (string.IsNullOrEmpty(clave))
+            {
+                MessageBox.Show("El campo de contraseña no puede estar vacío.", "Datos incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtClave.Focus();
+                return;
+            }
+
+            var usuarioService = new UsuarioService();
             var usuario = usuarioService.AutenticarUsuario(correo, clave);
 
             if (usuario != null)
@@ -47,12 +80,10 @@ namespace Sistema_Control_Acceso_Empleados
                     frm.Show();
                     this.Hide();
                 }
-
-                this.Hide();
             }
             else
             {
-                MessageBox.Show("Correo o contraseña incorrectos.");
+                MessageBox.Show("Correo o contraseña incorrectos.", "Error de autenticación", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -105,7 +136,7 @@ namespace Sistema_Control_Acceso_Empleados
 
         private void btnCerrar_MouseHover(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btnCerrar_MouseEnter(object sender, EventArgs e)
@@ -120,7 +151,7 @@ namespace Sistema_Control_Acceso_Empleados
 
         private void btnCerrar_MouseDown(object sender, MouseEventArgs e)
         {
-           
+
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)

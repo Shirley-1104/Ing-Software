@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sistema_Control_Acceso_Empleados.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,8 +13,10 @@ namespace Sistema_Control_Acceso_Empleados
 {
     public partial class frmGestionAcceso : Form
     {
-        public frmGestionAcceso(string id, string nombre)
+        private int _idUsuario;
+        public frmGestionAcceso(int id, string nombre)
         {
+            _idUsuario = id;
             InitializeComponent();
             CargarDgv();
             HelperUi.RedondearBordes(this, 20);
@@ -22,13 +25,15 @@ namespace Sistema_Control_Acceso_Empleados
         }
         private void CargarDgv()
         {
-            dgvHistorial.ColumnCount = 3;
-            dgvHistorial.Columns[0].Name = "Fecha";
-            dgvHistorial.Columns[1].Name = "Tipo de Acceso";
-            dgvHistorial.Columns[2].Name = "Motivo";
-
-            dgvHistorial.Rows.Add(DateTime.Now.ToString(), "QR", "-");
-            dgvHistorial.Rows.Add(DateTime.Now.AddDays(-1).ToString(), "Manual", "Ingreso por contingencia");
+            try
+            {
+                var tabla = AccesoService.ObtenerAccesosPorUsuario(_idUsuario);
+                dgvHistorial.DataSource = tabla;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar el historial: " + ex.Message);
+            }
         }
 
         private void frmGestionAcceso_Load(object sender, EventArgs e)

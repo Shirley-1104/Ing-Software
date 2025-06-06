@@ -200,7 +200,6 @@
             this.Controls.Add(this.lblTitulo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmEmpleados";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmEmpleados";
             this.Load += new System.EventHandler(this.frmEmpleados_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmpleados)).EndInit();

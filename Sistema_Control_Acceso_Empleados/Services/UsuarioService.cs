@@ -146,6 +146,138 @@ namespace Sistema_Control_Acceso_Empleados.Services
 
             return empleados;
         }
+        public bool EliminarUsuario(int usuarioId)
+        {
+            try
+            {
+                using (var conn = BaseDatos.GetConnection())
+                {
+                    conn.Open();
+
+                    string queryEliminarQR = "DELETE FROM codigos_qr WHERE usuario_id = @usuarioId";
+                    using (var cmdQR = new MySqlCommand(queryEliminarQR, conn))
+                    {
+                        cmdQR.Parameters.AddWithValue("@usuarioId", usuarioId);
+                        cmdQR.ExecuteNonQuery();
+                    }
+
+                    string queryEliminarAccesos = "DELETE FROM accesos WHERE usuario_id = @usuarioId";
+                    using (var cmdAccesos = new MySqlCommand(queryEliminarAccesos, conn))
+                    {
+                        cmdAccesos.Parameters.AddWithValue("@usuarioId", usuarioId);
+                        cmdAccesos.ExecuteNonQuery();
+                    }
+
+                    string queryEliminarUsuario = "DELETE FROM usuarios WHERE id = @usuarioId";
+                    using (var cmdUsuario = new MySqlCommand(queryEliminarUsuario, conn))
+                    {
+                        cmdUsuario.Parameters.AddWithValue("@usuarioId", usuarioId);
+                        int filasAfectadas = cmdUsuario.ExecuteNonQuery();
+                        return filasAfectadas > 0;
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                if (ex.Number == 1451)
+                {
+                    MessageBox.Show("No se puede eliminar este usuario porque tiene registros asociados.", "Error de restricción", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    MessageBox.Show("Error al eliminar usuario: " + ex.Message, "Error de base de datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al eliminar usuario: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        public bool EditarUsuario(Usuario usuario)
+        {
+            try
+            {
+                using (var conn = BaseDatos.GetConnection())
+                {
+                    conn.Open();
+
+                    string verificarCorreo = "SELECT id FROM usuarios WHERE correo = @correo AND id != @id";
+                    using (var cmdVerificar = new MySqlCommand(verificarCorreo, conn))
+                    {
+                        cmdVerificar.Parameters.AddWithValue("@correo", usuario.Correo);
+                        cmdVerificar.Parameters.AddWithValue("@id", usuario.Id);
+
+                        if (cmdVerificar.ExecuteScalar() != null)
+                        {
+                            MessageBox.Show("El correo ya está registrado para otro usuario. Usa otro.", "Error de duplicado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return false;
+                        }
+                    }
+
+                    string query;
+                    MySqlCommand cmd;
+
+                    if (string.IsNullOrEmpty(usuario.Contraseña))
+                    {
+                        query = @"UPDATE usuarios 
+                        SET nombre = @nombre, 
+                            apellido = @apellido, 
+                            correo = @correo, 
+                            rol = @rol 
+                        WHERE id = @id";
+
+                        cmd = new MySqlCommand(query, conn);
+                        cmd.Parameters.AddWithValue("@nombre", usuario.Nombre);
+                        cmd.Parameters.AddWithValue("@apellido", usuario.Apellido);
+                        cmd.Parameters.AddWithValue("@correo", usuario.Correo);
+                        cmd.Parameters.AddWithValue("@rol", usuario.Rol);
+                        cmd.Parameters.AddWithValue("@id", usuario.Id);
+                    }
+                    else
+                    {
+                        query = @"UPDATE usuarios 
+                        SET nombre = @nombre, 
+                            apellido = @apellido, 
+                            correo = @correo, 
+                            contraseña = @contraseña, 
+                            rol = @rol 
+                        WHERE id = @id";
+
+                        cmd = new MySqlCommand(query, conn);
+                        cmd.Parameters.AddWithValue("@nombre", usuario.Nombre);
+                        cmd.Parameters.AddWithValue("@apellido", usuario.Apellido);
+                        cmd.Parameters.AddWithValue("@correo", usuario.Correo);
+                        cmd.Parameters.AddWithValue("@contraseña", usuario.Contraseña);
+                        cmd.Parameters.AddWithValue("@rol", usuario.Rol);
+                        cmd.Parameters.AddWithValue("@id", usuario.Id);
+                    }
+
+                    int filasAfectadas = cmd.ExecuteNonQuery();
+                    return filasAfectadas > 0;
+                }
+            }
+            catch (MySqlException ex)
+            {
+                if (ex.Number == 1062)
+                {
+                    MessageBox.Show("El correo ya está registrado. Usa otro.", "Error de duplicado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    MessageBox.Show("Error al editar usuario: " + ex.Message, "Error de base de datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al editar usuario: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
 
     }
+
 }
